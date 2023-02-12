@@ -1,0 +1,157 @@
+
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link href="/docs/5.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    
+    <title>DePaso</title>
+    <link rel="icon" href="logo_dePaso.png">
+
+    <style type="text/css">
+      .ocultar {
+          display: none;
+      }
+
+      .mostrar {
+          display: block;
+      }
+  </style>
+
+</head>
+<div id="msg"></div>
+
+       
+<section class="vh-100" style="background-color: #eee;">
+    <div class="container h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-lg-12 col-xl-11">
+          <div class="card text-black" style="border-radius: 25px;">
+            <div class="card-body p-md-5">
+              <div class="row justify-content-center">
+                <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+  
+                  <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sing up</p>
+  
+                  <form onsubmit="verificarPasswords(); return false"  method="post">
+  
+                    <div class="d-flex flex-row align-items-center mb-4">
+                      <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                      <div class="form-outline flex-fill mb-0">
+                        <label class="form-label" for="form3Example1c">Nombre</label>
+                        <input type="text" id="username" class="form-control" name="username" placeholder="Enter name" required/>
+                      </div>
+                    </div>
+  
+                    <div class="d-flex flex-row align-items-center mb-4">
+                      <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                      <div class="form-outline flex-fill mb-0">
+                        <label class="form-label" for="form3Example3c">Email</label>
+                        <input type="email" id="email" class="form-control" value="" name="email" placeholder="name@gmail.com" required />
+                      </div>
+                    </div>
+  
+                    <div class="d-flex flex-row align-items-center mb-4">
+                      <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
+                      <div class="form-outline flex-fill mb-0">
+                        <label class="form-label" for="form3Example4c">Contraseña</label>
+                        <input type="password" id="pass1" class="form-control" value="" name="pass1" placeholder="Al menos 8 carácteres" required />
+                      </div>
+                    </div>
+
+                     <!-- Mensajes de Verificación -->
+                    <div id="error" class="alert alert-danger ocultar" role="alert">
+                      Las Contraseñas no coinciden, vuelve a intentar !
+                    </div>
+                    <div id="ok" class="alert alert-success ocultar" role="alert">
+                      Las Contraseñas coinciden ! (Procesando formulario ... )
+                    </div>
+                    <!-- Fin de mensajes-->
+                    <div class="d-flex flex-row align-items-center mb-4">
+                      <i class="fas fa-key fa-lg me-3 fa-fw"></i>
+                      <div class="form-outline flex-fill mb-0">
+                        <label class="form-label" for="form3Example4cd">Repite la contraseña</label>
+                        <input type="password" id="pass2" class="form-control" value="" name="repass" required/>
+                        
+                      </div>
+                    </div>
+                    
+                    
+                    
+                    <div class="d-flex flex-row align-items-center mb-4">
+                      <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                      <div class="form-outline flex-fill mb-0">
+                        <label class="form-label" for="form3Example1c">Código Postal</label>
+                        <input type="number" inputmode="numeric" id="postal" value="" class="form-control" name="postal" min="46000" max="46989" required/>
+                      </div>
+                    </div>
+
+                    <div class="form-check d-flex justify-content-center mb-5">
+                     
+                      <label class="form-check-label" for="form2Example3">
+                        <input class="form-check-input me-2" type="checkbox" name="Term&Cond" id="Term&Cond" required />
+                        Estoy de acuerdo con los términos y condiciones <a href="#!"></a>
+                      </label>
+                      <a href="terminos.html">Términos y condiciones</a>
+                    </div>
+                   
+                    <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                      <button class="btn btn-primary btn-lg">Registrarse</button>
+                    </div>
+  
+                  </form>
+  
+                </div>
+                <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
+  
+                  <img src="logo_dePaso.png"
+                    class="img-fluid" alt="Imagen bonita de nuestro logo">
+  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script type="text/javascript"> 
+
+    function verificarPasswords() {
+
+        // Ontenemos los valores de los campos de contraseñas 
+        pass1 = document.getElementById('pass1');
+        pass2 = document.getElementById('pass2');
+
+        // Verificamos si las constraseñas no coinciden 
+        
+        if (pass1.value != pass2.value) {
+
+            // Si las constraseñas no coinciden mostramos un mensaje 
+            document.getElementById("error").classList.add("mostrar");
+
+            return false;
+        }
+        
+        else {
+
+            // Si las contraseñas coinciden ocultamos el mensaje de error
+            document.getElementById("error").classList.remove("mostrar");
+
+            // Mostramos un mensaje mencionando que las Contraseñas coinciden 
+            
+
+            // Desabilitamos el botón de login 
+            document.getElementById("login").disabled = true;
+
+            // Refrescamos la página (Simulación de envío del formulario) 
+            setTimeout(function() {
+                location.reload();
+            }, 3000);
+
+            return true;
+        }
+
+        
+
+    }
+</script>
